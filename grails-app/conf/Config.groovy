@@ -77,6 +77,9 @@ log4j = {
     //appenders {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
+    appenders {
+        console name:'stdout', layout:pattern(conversionPattern: '%d [EXODUS] %5p [%c{2}] | %m%n')
+    }
 
     error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
            'org.codehaus.groovy.grails.web.pages', //  GSP
@@ -107,3 +110,8 @@ grails.gorm.default.mapping = {
 }
 
 grails.gorm.failOnError = true
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'general.Usuario'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'general.UsuarioRol'
+grails.plugins.springsecurity.authority.className = 'general.Rol'
