@@ -1,6 +1,8 @@
 // locations to search for config files that get merged into the main config
 // config files can either be Java properties files or ConfigSlurper scripts
 
+grails.config.locations = [ "file:${userHome}/.grails/${appName}-config.groovy" ]
+
 // grails.config.locations = [ "classpath:${appName}-config.properties",
 //                             "classpath:${appName}-config.groovy",
 //                             "file:${userHome}/.grails/${appName}-config.properties",
@@ -9,7 +11,6 @@
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
-
 
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
@@ -60,6 +61,7 @@ grails.exceptionresolver.params.exclude = ['password']
 environments {
     development {
         grails.logging.jul.usebridge = true
+        grails.gsp.enable.reload = true
     }
     production {
         grails.logging.jul.usebridge = false
@@ -89,4 +91,19 @@ log4j = {
            'net.sf.ehcache.hibernate'
 
     warn   'org.mortbay.log'
+
+    debug  'grails.app'
+
+    //trace  'org.hibernate.type'
+
+    off    'grails.app.services.org.grails.plugin.resource',
+           'grails.app.taglib.org.grails.plugin.resource',
+           'grails.app.resourceMappers.org.grails.plugin.resource'
 }
+
+grails.gorm.default.mapping = {
+   cache true
+   id generator:'identity'
+}
+
+grails.gorm.failOnError = true
