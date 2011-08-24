@@ -28,9 +28,6 @@ class BootStrap {
             admin = new general.Usuario(
                 username:'admin'
                 ,password:'admin'
-                ,nombre:'David'
-                ,apellido:'Mendoza'
-                ,correo:'david.mendoza@um.edu.mx'
             )
             admin.save(flush:true)
             general.UsuarioRol.create(admin, rolAdmin, true)
